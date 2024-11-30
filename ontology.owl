@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="ontology.owl"
+         xmlns="ontology.owl#">
+
+<owl:Ontology rdf:about="ontology.owl"/>
+
+<owl:ObjectProperty rdf:about="#sender">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Message"/>
+  <rdfs:range rdf:resource="#Agent"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#receiver">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Message"/>
+  <rdfs:range rdf:resource="#Agent"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#hasStatus">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Agent"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasPositionX">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Agent"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasPositionY">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Agent"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasPositionZ">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Agent"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#hasBatteryLevel">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#DroneAgent"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#performative">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Message"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#content">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Message"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#Agent">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:Class rdf:about="#DroneAgent">
+  <rdfs:subClassOf rdf:resource="#Agent"/>
+</owl:Class>
+
+<owl:Class rdf:about="#CameraAgent">
+  <rdfs:subClassOf rdf:resource="#Agent"/>
+</owl:Class>
+
+<owl:Class rdf:about="#GuardAgent">
+  <rdfs:subClassOf rdf:resource="#Agent"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RobberAgent">
+  <rdfs:subClassOf rdf:resource="#Agent"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Message">
+  <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#DroneAgent_5308415472">
+  <rdf:type rdf:resource="#DroneAgent"/>
+  <hasStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Idle</hasStatus>
+  <hasPositionX rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</hasPositionX>
+  <hasPositionY rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</hasPositionY>
+  <hasPositionZ rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</hasPositionZ>
+  <hasBatteryLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</hasBatteryLevel>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CameraAgent_5308415952">
+  <rdf:type rdf:resource="#CameraAgent"/>
+  <hasStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Monitoring</hasStatus>
+  <hasPositionX rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</hasPositionX>
+  <hasPositionY rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</hasPositionY>
+  <hasPositionZ rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</hasPositionZ>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GuardAgent_5308415136">
+  <rdf:type rdf:resource="#GuardAgent"/>
+  <hasStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Idle</hasStatus>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RobberAgent_5308415760">
+  <rdf:type rdf:resource="#RobberAgent"/>
+  <hasStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active</hasStatus>
+  <hasPositionX rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</hasPositionX>
+  <hasPositionY rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</hasPositionY>
+  <hasPositionZ rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</hasPositionZ>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>

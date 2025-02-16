@@ -1,163 +1,183 @@
-# Link to download the complete Unity project
+# **Autonomous Security System**
+> *A simulation project integrating Unity, Python, and YOLOv5 to coordinate a multi-agent security solution.*
 
-https://drive.google.com/file/d/1rR61e3CQ-W9RmvYFS4vwpq7gyrva65qH/view?usp=sharing
+## **Introduction**
+Autonomous Security System is a comprehensive simulation that replicates a coordinated security solution for large open areas. By integrating Unity for a realistic 3D environment, Python for server-side logic and agent communication, and YOLOv5 for real-time object detection, this project demonstrates how multiple agents—such as surveillance cameras, a drone, a security guard, and a simulated intruder—can work together to rapidly detect and respond to potential threats.
 
-# Simulation Project: Autonomous Security System
+## **Project Description**
+- **Main Functionality:**  
+  - Simulate a multi-agent security system where static cameras continuously monitor an area and send image data to a YOLOv5 detection server.
+  - Dispatch a drone to verify alerts by streaming live footage and gathering additional data.
+  - Enable a security guard to review the information and make final decisions on whether to escalate or dismiss alerts.
+  
+- **Technologies Used:**  
+  - **Unity:** For creating and visualizing the simulation environment.
+  - **Python:** To manage server-side operations and inter-agent communications.
+  - **YOLOv5:** For high-performance, real-time object detection.
+  - **Additional Libraries:** Flask, Agentpy, Owlready2, Plotly, and Matplotlib for simulation server functionality and data visualization.
 
-This project simulates a coordinated security system using Unity, Python, and YOLOv5 for object detection. It involves multiple agents, including surveillance cameras, a drone, a security guard, and a simulated intruder. Follow the steps below to set up and run the simulation.
+- **Challenges Faced:**  
+  - Integrating multiple technologies and ensuring smooth communication between diverse agents.
+  - Achieving real-time performance with accurate object detection using YOLOv5.
+  - Managing resource constraints, such as drone battery life and processing load, within the simulation.
+
+- **Future Improvements:**  
+  - Enhancing detection accuracy and response times.
+  - Expanding the simulation with more complex scenarios and additional agent types.
+  - Incorporating advanced machine learning models for improved threat assessment.
+
+## **Table of Contents**
+1. [Introduction](#introduction)
+2. [Project Description](#project-description)
+3. [Installation](#installation)
+4. [Usage](#usage)
+5. [Additional Documentation](#additional-documentation)
+6. [License](#license)
+7. [Status Badges](#status-badges)
+
+## **Installation**
+
+### **1. Prerequisites**
+Before starting, ensure your system meets the following requirements:
+
+#### **Software Required:**
+- **Unity:** Version 2020.3 or higher is recommended.
+- **Python:** Version 3.8 or higher.
+- **Pip:** Python package manager.
+- **Git**
+
+#### **Hardware Recommended:**
+- **Processor:** Modern CPU with support for AI operations.
+- **GPU:** CUDA-compatible GPU (recommended for accelerating YOLOv5).
+- **RAM:** Minimum 8 GB.
 
 ---
 
-## Prerequisites
-
-### Software Required:
-- Unity (version 2020.3 or higher recommended)
-- Python 3.8 or higher
-- Pip (Python package manager)
-- Git
-- Required Python libraries (`requirements.txt` for YOLOv5 and additional libraries)
-
-### Hardware Recommended:
-- Processor: Modern CPU with AI support
-- GPU: CUDA-compatible GPU for YOLOv5 acceleration
-- Minimum RAM: 8 GB
-
----
-
-## Installation
-
-### 1. Setting Up YOLOv5
-
+### **2. Setting Up YOLOv5**
 1. Open a terminal and clone the YOLOv5 repository:
    ```bash
    git clone https://github.com/ultralytics/yolov5
-   ```
-2. Navigate to the YOLOv5 directory:
-   ```bash
-   cd yolov5
-   ```
-3. Install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Verify the installation by running:
-   ```bash
-   python detect.py --source 0
-   ```
-   This should activate your webcam and display object detection results.
 
----
+	2.	Navigate to the cloned directory:
 
-### 2. Setting Up the Python Servers
+cd yolov5
 
-#### a. Simulation Server (`main.py`)
 
-1. Install the required Python libraries:
-   ```bash
-   pip install flask agentpy owlready2 plotly matplotlib
-   ```
-2. Save `main.py` in your project directory.
-3. Start the server:
-   ```bash
-   python main.py
-   ```
-   The server will run at `http://localhost:5002`.
+	3.	Install the necessary dependencies:
 
-#### b. YOLOv5 Detection Server (`vision.py`)
+pip install -r requirements.txt
 
-1. Save `vision.py` in your project directory.
-2. Start the YOLOv5 server:
-   ```bash
-   python vision.py
-   ```
-   The server will run at `http://localhost:5001`.
 
----
+	4.	Verify YOLOv5 is functioning correctly by running:
 
-### 3. Setting Up Unity
+python detect.py --source 0
 
-#### a. Importing the Unity Package
+This command should activate your webcam and display detection results.
 
-1. Open Unity Hub and create a new 3D project or open an existing one.
-2. Go to `Assets > Import Package > Custom Package...`.
-3. Select the provided Unity Package file and click `Import`.
-4. Ensure all items are selected and confirm the import.
+3. Configuring the Python Servers
 
-#### b. Verifying the Imported Scene
+a. Simulation Server (main.py):
+	1.	Install the required libraries:
 
-1. Open the scene file located in `Assets/Scenes/SimulationScene.unity`.
-2. Check the following GameObjects and their configurations:
-   - **Cameras (Camera1, Camera2, Camera3, Camera4):**
-     - Each camera should have the `CameraController.cs` script attached.
-     - Set `serverUrl` to `http://localhost:5001/detect`.
-     - Assign unique `cameraId` values (e.g., "Camera1", "Camera2").
-   - **Drone (Drone1):**
-     - The drone should have the `DroneController.cs` script attached.
-     - Configure properties such as `landingStationPosition`, `takeOffHeight`, and `patrolPoints`.
-   - **Security Guard (Security1):**
-     - Attach the `SecurityGuardController.cs` script.
-   - **Robber (Robber1):**
-     - A GameObject representing the simulated intruder.
+pip install flask agentpy owlready2 plotly matplotlib
 
-#### c. Running the Simulation
 
-1. Ensure all scripts and configurations are correct.
-2. Press the **Play** button in the Unity Editor to start the simulation.
+	2.	Place the main.py file in your project directory.
+	3.	Start the simulation server:
 
----
+python main.py
 
-## Running the Full System
+The server will be available at http://localhost:5002.
 
-1. **Start the YOLOv5 Detection Server:**
-   ```bash
-   python vision.py
-   ```
+b. YOLOv5 Detection Server (vision.py):
+	1.	Place the vision.py file in the main project directory.
+	2.	Start the YOLOv5 detection server:
 
-2. **Start the Simulation Server:**
-   ```bash
-   python main.py
-   ```
+python vision.py
 
-3. **Run the Unity Simulation:**
-   - Open Unity and press the **Play** button.
+The detection server will run at http://localhost:5001.
 
-4. **Monitor the Workflow:**
-   - Surveillance cameras capture images and send detections to the YOLOv5 server.
-   - The simulation server logs interactions and coordinates agents.
-   - The drone responds to alerts, verifies threats, and interacts with the security guard for decision-making.
-   - The security guard evaluates data and makes final decisions.
+4. Setting Up Unity
 
----
+a. Importing the Unity Package
+	1.	Open Unity Hub and either create a new 3D project or open an existing one.
+	2.	Navigate to Assets > Import Package > Custom Package....
+	3.	Select the provided Unity Package file and click Import.
+	4.	Confirm that all items are selected and complete the import process.
 
-## Viewing Results
+b. Verifying the Imported Scene
+	1.	Open the scene file located at Assets/Scenes/SimulationScene.unity.
+	2.	Ensure the following GameObjects are properly configured:
+	•	Cameras (Camera1, Camera2, Camera3, Camera4):
+	•	Each camera should have the CameraController.cs script attached.
+	•	Set the serverUrl to http://localhost:5001/detect.
+	•	Assign a unique cameraId to each camera (e.g., “Camera1”, “Camera2”).
+	•	Drone (Drone1):
+	•	The drone should have the DroneController.cs script attached.
+	•	Configure properties such as landingStationPosition, takeOffHeight, and patrolPoints.
+	•	Security Guard (Security1):
+	•	Ensure the SecurityGuardController.cs script is attached.
+	•	Robber (Robber1):
+	•	A GameObject representing the simulated intruder.
+	3.	Verify all configurations in the Inspector window.
+	4.	Ensure both the simulation and YOLOv5 servers are running before proceeding to play the scene.
 
-- **Logs:**
-  - Check the consoles of Unity and the Python servers for real-time logs.
-- **Final Report:**
-  - The simulation server (`main.py`) generates a report as an HTML file (`utility_graph.html`) containing metrics such as battery levels, distance traveled, and time.
-  - Open the file in a web browser to visualize the performance metrics.
+5. Running the Full System
+	1.	Start the YOLOv5 Detection Server:
 
----
+python vision.py
 
-## Troubleshooting
 
-- **Connection Issues:**
-  - Ensure both servers (`main.py` and `vision.py`) are running before starting Unity.
-  - Verify that ports `5001` and `5002` are not in use by other processes.
-- **Unity Errors:**
-  - Check the Unity Console for errors related to scripts or configurations.
-- **YOLOv5 Detection Issues:**
-  - Ensure the images sent to YOLOv5 meet the model's requirements (e.g., resolution of 224x224).
-  - Confirm the YOLOv5 model is correctly installed and functional.
+	2.	Start the Simulation Server:
 
----
+python main.py
 
-## Summary of System Workflow
 
-1. Cameras capture and send images to the YOLOv5 server.
-2. YOLOv5 detects objects and sends results to the simulation server.
-3. The drone responds to alerts, verifies threats, and updates the simulation server.
-4. The security guard evaluates findings and makes final decisions.
-5. The system generates a performance report for analysis.
+	3.	Launch the Unity Simulation:
+	•	Open Unity and press the Play button in the Editor.
+	4.	Monitor the Workflow:
+	•	Surveillance cameras capture images and forward detections to the YOLOv5 server.
+	•	The simulation server logs all interactions and coordinates agent responses.
+	•	The drone is activated to verify alerts and relay live footage.
+	•	The security guard evaluates the information and makes final decisions.
 
-By following these steps, you can successfully run the simulation and analyze the performance of your autonomous security system.
+6. Visualizing Results
+	•	Logs: Check the Unity console and the Python server logs for real-time updates.
+	•	Final Report:
+	•	The simulation server (main.py) generates a performance report saved as utility_graph.html.
+	•	Open this HTML file in a web browser to view metrics such as battery levels, distance traveled, and response times.
+
+7. Troubleshooting
+	•	Connection Issues:
+	•	Ensure that both Python servers (main.py and vision.py) are running before starting Unity.
+	•	Verify that ports 5001 and 5002 are not occupied by other processes.
+	•	Unity Errors:
+	•	Check the Unity Console for errors related to missing scripts or misconfigurations.
+	•	YOLOv5 Detection Issues:
+	•	Confirm that the YOLOv5 model is correctly set up and that input images meet the expected specifications.
+
+Usage
+	1.	Start the Servers:
+Begin by launching both the YOLOv5 detection server and the simulation server.
+	2.	Run the Unity Simulation:
+Open Unity and press Play to start the simulation.
+	3.	Observe the Process:
+	•	Cameras capture images and send data to the detection server.
+	•	The drone is deployed to verify alerts and provide live footage.
+	•	The security guard reviews the information and makes the final decision on each alert.
+	4.	Review Performance Metrics:
+Analyze the generated utility_graph.html report for insights into system performance.
+
+Additional Documentation
+
+For more detailed setup instructions, troubleshooting tips, and technical specifications, please refer to the complete documentation provided within the repository.
+
+License
+
+This project is licensed under the MIT License.
+
+Status Badges
+
+ # Link to download the complete Unity project
+
+https://drive.google.com/file/d/1rR61e3CQ-W9RmvYFS4vwpq7gyrva65qH/view?usp=sharing

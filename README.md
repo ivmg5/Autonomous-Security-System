@@ -54,11 +54,11 @@ Before starting, ensure your system meets the following requirements:
 ---
 
 ### **2. Setting Up YOLOv5**
-1. Open a terminal and clone the YOLOv5 repository:
+1. Open a terminal and clone the repository:
    ```bash
-   git clone https://github.com/ultralytics/yolov5
+   git clone [https://github.com/ivmg5/Autonomous-Security-System]
    ```
-2. Navigate to the cloned directory:
+2. Navigate to the yolov5 directory:
    ```bash
    cd yolov5
    ```
@@ -106,16 +106,16 @@ The detection server will run at http://localhost:5001.
 1. Open the scene file located at Assets/Scenes/SimulationScene.unity.
 2. Ensure the following GameObjects are properly configured:
    - Cameras (Camera1, Camera2, Camera3, Camera4):
-     	- Each camera should have the CameraController.cs script attached.
-	- Set the serverUrl to http://localhost:5001/detect.
-     	- Assign a unique cameraId to each camera (e.g., “Camera1”, “Camera2”).
+     - Each camera should have the CameraController.cs script attached.
+     - Set the serverUrl to http://localhost:5001/detect.
+     - Assign a unique cameraId to each camera (e.g., “Camera1”, “Camera2”).
    - Drone (Drone1):
-   	- The drone should have the DroneController.cs script attached.
-	- Configure properties such as landingStationPosition, takeOffHeight, and patrolPoints.
+     - The drone should have the DroneController.cs script attached.
+     - Configure properties such as landingStationPosition, takeOffHeight, and patrolPoints.
    - Security Guard (Security1):
-     	- Ensure the SecurityGuardController.cs script is attached.
+     - Ensure the SecurityGuardController.cs script is attached.
    - Robber (Robber1):
-	- A GameObject representing the simulated intruder.
+     - A GameObject representing the simulated intruder.
 3. Verify all configurations in the Inspector window.
 4. Ensure both the simulation and YOLOv5 servers are running before proceeding to play the scene.
 
@@ -140,7 +140,7 @@ The detection server will run at http://localhost:5001.
 - Logs: Check the Unity console and the Python server logs for real-time updates.
 - Final Report:
   - The simulation server (main.py) generates a performance report saved as utility_graph.html.
-  - Open this HTML file in a web browser to view metrics such as battery levels, distance traveled, and response times.
+  - Open this HTML file in a web browser to view metrics such as battery levels and distance traveled.
 
 ### **7. Troubleshooting**
 - Connection Issues:
@@ -158,11 +158,11 @@ The detection server will run at http://localhost:5001.
    - Cameras capture images and send data to the detection server.
    - The drone is deployed to verify alerts and provide live footage.
    - The security guard reviews the information and makes the final decision on each alert.
-4. Review Performance Metrics: Analyze the generated utility_graph.html report for insights into system performance.
+4. Review Performance Metrics: Analyze the generated utility_graph.html report.
 
 ## **Additional Documentation**
 
-For more detailed setup instructions, troubleshooting tips, and technical specifications, please refer to the complete documentation provided within the repository.
+For more detailed technical specifications, please refer to the complete documentation provided within the repository.
 
 ## **License**
 
